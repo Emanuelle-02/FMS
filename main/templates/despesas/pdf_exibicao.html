@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Extrato de Despesas</title>
+
+        <style>
+            * {
+                font-size: 15px;
+            }
+
+            table {
+                table-layout: fixed;
+                width: 100%;
+                border: 1px solid black;
+            }
+
+            table th {
+                text-align: left;
+                padding: 3px;
+                padding-bottom: 0;
+            }
+
+            table td {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                padding: 3px;
+                padding-bottom: 0;
+            }
+        </style>
+</head>
+
+<body>
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Descrição</th>
+                    <th>Categoria</th>
+                    <th>Valor</th>
+                    <th>Data</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%for despesa in despesas_obj %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td sttyle="width: 40%; text-align: left;"> {{despesa.descricao}} </td>
+                    <td style="width: 30%;"> {{despesa.categoria}} </td>
+                    <td style="width: 20%;"> {{despesa.valor}} </td>
+                    <td style="width: 20%;"> {{despesa.data}} </td>
+                </tr>
+            {%endfor%}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

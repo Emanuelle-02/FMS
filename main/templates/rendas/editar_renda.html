@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="my-3 p-3 bg-body rounded shadow-sm">
+    <div class="container mt-5">
+        <div class="row mt-5">
+            <div class="col-md-10">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'listagem_renda' %}">Rendas</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Editar renda</li>
+                    </ol>
+                </nav>
+            </div>
+                
+            <div class="col-md-2">
+                <a href="{% url 'delete_renda' renda.id %}" class="btn btn-danger btn-sm">Remover renda</a>
+            </div>
+        </div>
+    </div>
+
+        <div class="card mt-5">
+            <div class="card-body">
+                <form action="{% url 'editar_renda' renda.id %}" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="">Descrição</label>
+                        <input type="text" name="descricao" class="form-control form-control-sm" id="" value="{{val.descricao}}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Valor</label>
+                        <input type="number" name="valor" class="form-control form-control-sm" id="" value="{{val.valor}}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Data</label>
+                        <input type="date" name="data" class="form-control form-control-sm" value="{{val.data | date:'Y-m-d'}}" id=""required>
+                    </div>
+
+                    <input type="submit" value="Atualizar renda" class="btn btn-primary mt-4 btn-primary-sm">
+                </form>    
+            </div>
+        </div>
+</div>
+{% endblock %}
